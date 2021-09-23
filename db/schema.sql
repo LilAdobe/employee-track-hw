@@ -1,29 +1,53 @@
-DROP DATABASE IF EXISTS registrar_db;
-CREATE DATABASE registrar_db;
+DROP DATABASE IF EXISTS employee_db;
+CREATE DATABASE employee_db;
 
-USE registrar_db;
+USE employee_db;
 
 CREATE TABLE department (
-  id INT NOT NULL,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  PRIMARY KEY (id)
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE courses (
-  id INT NOT NULL,
-  course_title VARCHAR(30) NOT NULL,
-  instructor_id INT,
-  order_details TEXT,
-  FOREIGN KEY (instructor_id) --
-  REFERENCES instructors(id)
-  ON DELETE SET NULL
+CREATE TABLE role (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(30) NOT NULL,
+salary DECIMAL NOT NULL,
+department_id INT,
+FOREIGN KEY (department_id)
+REFERENCES department(id)
+ON DELETE SET NULL
 );
 
 
-INSERT INTO instructors(id, first_name, last_name ) VALUES 
-(1, "Randy", "Savage");
+CREATE TABLE employee (
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
+role_id INT,
+manager_id INT,
+FOREIGN KEY (role_id) --
+REFERENCES role(id)
+ON DELETE SET NULL,
+FOREIGN KEY (manager_id) --
+REFERENCES employee(id)
+ON DELETE SET NULL
+);
 
-INSERT INTO courses (id, course_title, instructor_id) VALUES
-(1,"Advanced CSS",1), 
-(2, "Introduction to Html",1);
+
+INSERT INTO department (name)
+VALUES 
+("Randy"),
+("mike");
+
+INSERT INTO role (title, salary, department_id)
+VALUES
+("Security", 23434, 1), 
+("Master Chef", 23423, 2);
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES
+("mike", "goodman", 2, NULL);
+
+SELECT * FROM department;
+SELECT * FROM role;
+SELECT * FROM employee;
