@@ -6,4 +6,4 @@ tracking employees thorugh schema.sql
 * created inquierer
 
 ## Links
-- [Github](https://github.com/LilAdobe/note-take-hw)
+- [Github](https://github.com/LilAdobe/employee-track-hw)
