@@ -36,17 +36,26 @@ ON DELETE SET NULL
 
 INSERT INTO department (name)
 VALUES 
-("Randy"),
-("mike");
+("Management"),
+("Distribution"),
+("Security"),
+("Logistics");
 
 INSERT INTO role (title, salary, department_id)
 VALUES
-("Security", 23434, 1), 
-("Master Chef", 23423, 2);
+("CEO", 23434, 1),
+("CFO", 10000, 4),
+("COO", 10000, 3),
+("Transport", 10000, 2),
+("Head Of Security", 23423, 2);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-("mike", "goodman", 2, NULL);
+("Mike", "Felix", 1, 1),
+("Rafael", "Carter", 3, 1),
+("Aaron", "Fuentes", 4, 1),
+("Juan", "Azul", 5, 1),
+("Ernest", "Carrillo", 2, 1);
 
 SELECT * FROM department;
 SELECT * FROM role;
